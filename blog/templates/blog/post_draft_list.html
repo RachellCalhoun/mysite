@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+{% block menu %}
+<li><a href="/" >Home</a></li>
+<li><a href="/portfolio" >Portfolio</a></li>
+<li><a href="/skills" >Skills</a></li>
+<li  class ="active"><a href="/blog" >Blog</a></li>
+{% endblock %}
+{% block content%}
+
+      <h1 class="blog text-center">My thoughts on some things</h1>
+        <div class="container main">
+        <hr class="featurette-divider"></hr>
+        <div class="row">
+
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+
+          {% if user.is_authenticated %}
+          <a href="{% url "post_new" %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+          <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+          {% endif %}
+
+        {% for post  in  posts %}
+
+            <h1 class="title"><a href="{% url "blog.views.post_detail" pk=post.pk %}">{{ post.title }}</a></h1>
+          <div class= "border">
+            {%if post.img %} <img class = "img-responsive img-rounded blogimage" src="{{post.img.url}}">  {% endif %}
+            <div class="blogcontent">
+            <p> {{post.text|safe}}</p>
+              {% if post.published_date %}
+              <p>Published: {{ post.published_date }}
+              {% else %}
+              <p><a class="btn btn-default publishbtn" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>
+              {% endif %}
+              Created: {{ post.created_date|date:"d-m-Y" }}</p>
+            </div>
+            </div>
+            </div><!--close row-->
+          </div>
+        {% endfor %}
+      </div><!--close row-->
+      <div class="col-md-2"></div>
+    </div>
+  </div><!--close container-->
+  {% endblock content %}

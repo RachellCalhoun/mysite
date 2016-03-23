@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container featuredworkcontainer">
+<hr>
+		<div class="row app">
+			<div class="col-md-12">
+				<img src="http://placekitten.com/1150/450 "   class="img-responsive rowimg" alt="awesome picture">
+			</div>
+		</div><!--rowapp-->
+
+			<div class="row title-row" id="featured">
+			<div class="col-md-12">
+				<h2 class="text-muted ">Featured Work</h2>
+			</div>
+		</div>
+    {% for project in entries %}
+    {% if forloop.counter0|divisibleby:2 %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="projects center-block">
+                {% if project.img %}
+                <img class = "img-responsive img-rounded center-block catimage" data-target="#{{project.pk}}" data-toggle="modal" class="img-responsive thumbnail center-block" alt="cute skills" src="{{ project.img.url }}">
+                {% endif %}
+                <div class="description">
+                   {% if project.link %}
+                    <a href="{{project.link}}"><h1>{{ project.title }}</h1></a>
+                    {% else %}
+                    <h1>{{ project.title }}</h1>
+                    {% endif %}
+                    {% if project.text %}
+                    <h3>{{ project.text|linebreaks|truncatechars:100 }}</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!--col-->
+        <!-- Modal -->
+        <div class="modal fade" id="{{project.pk}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-center" id="myModalLabel">{{project.title}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img class="img-responsive" style="min-width:100%" src="{{project.img.url}}">
+                        <p class="text-dark">{{project.text|linebreaks}}. </p>
+                           {% if project.link %}
+                    <a href="{{ project.link }}"><p>{{project.link}}</p></a>
+                    {% endif %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% elif not forloop.counter0|divisibleby:2 %}
+        <div class="col-md-6">
+            <div class="projects center-block">
+                {% if project.img %}
+                <img class = "img-responsive img-rounded center-block catimage"  data-target="#{{project.pk}}" data-toggle="modal" class="img-responsive thumbnail center-block" alt="cute skills" src="{{ project.img.url }}">
+                {% endif %}
+                <div class="description">
+                	{% if project.link %}
+                    <a href="{{project.link}}"><h1>{{ project.title }}</h1></a>
+                    {% else %}
+                    <h1>{{ project.title }}</h1>
+                    {% endif %}
+                    {% if project.text %}
+                    <h3>{{ project.text|linebreaks|truncatechars:100 }}</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!--col-->
+        <!-- Modal -->
+
+    <!--row-->
+    <div class="modal fade" id="{{project.pk}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="myModalLabel">{{project.title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <img class="img-responsive" style="min-width:100%" src="{{project.img.url}}">
+                    <p class="text-dark">{{project.text|linebreaks}}. </p>
+                     {% if project.link %}
+                    <a href="{{ project.link }}"><p>{{project.link}}</p></a>
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div><!--row-->
+    </div><!--container-->
+    {% endif %}
+
+{% if forloop.last and forloop.counter0|divisibleby:2%}
+</div>
+</div>
+{% endif %}
+{% endfor %}
+
+<div class="container">
+		<div class="row title-row">
+			<div class="col-md-12">
+			<h2 class="text-muted" id="skillscontent">Skills</h2>
+			</div>
+		</div>
+
+		<div class="skillscontent" >
+		{% for skill in skills %}
+			<div class="row">
+				<div class="col-md-2 ">
+					<div class="skill-images center-block">
+					{% if skill.img %}
+						<img src="{{ skill.img.url }}" class="center-block img-responsive">
+					{% endif %}
+					<h5>{{ skill.title }}</h5>
+					</div>
+				</div>
+				<div class="col-md-10">
+					{% if skill.text %}
+					<h5 class="">{{ skill.text }} </h5>
+					{% endif %}
+				</div>
+			</div>
+				{% if not forloop.last %}
+			<hr>
+		{% endif %}
+
+			{% endfor %}
+		</div>
+</div><!--container-->
+
+
+{% endblock %}

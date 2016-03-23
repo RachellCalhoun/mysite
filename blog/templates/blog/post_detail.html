@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block menu %}
+<li><a href="/" >Home</a></li>
+<li><a href="/portfolio" >Portfolio</a></li>
+<li><a href="/skills" >Skills</a></li>
+<li  class ="active"><a href="/blog" >Blog</a></li>
+{% endblock %}
+{% block content %}
+<div class="container main">
+
+    <div class="row">
+
+      <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+          <h1 class="title">{{ post.title }}</h1>
+          <p><a href="/blog">Back</a></p>
+        </div>
+        </div><!--close row-->
+
+      <div class="row">
+        <div class="col-md-2"></div>
+          <div class="col-md-8 border main">
+
+          {%if post.img %} <img class = "img-responsive img-rounded blogimage" src="{{post.img.url}}">  {% endif %}
+          <p class="blogcontent">{{ post.text|safe }}</p>
+          </div>
+        </div> <!--close the row-->
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-2">
+          {% if user.is_authenticated %}
+          <a class="btn btn-default editbtn" href="{% url "post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+          <a class="btn btn-default deletebtn" href="{% url "post_remove" pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+          {% endif %}
+          </div>
+          <div class="col-md-5">
+            {% if post.published_date %}
+              <p>Published: {{ post.published_date }}</p>
+              {% else %}
+              {% if user.is_authenticated %}
+              <a class="btn btn-default publishbtn" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>
+              {% endif %}
+            {% endif %}
+          </div><!--close date-->
+        </div><!--close row-->
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+
+          <a class="btn btn-default addcommentbtn" href="{% url "add_comment_to_post" pk=post.pk %}">Add comment</a>
+          {% for comment in post.comments.all %}
+    {% if user.is_authenticated or comment.approved_comment %}
+    <hr>
+    <div class="comment">
+        <div class="date">
+            {{ comment.created_date }}
+            {% if not comment.approved_comment %}
+                <a class="btn btn-default removebtn" href="{% url "comment_remove" pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                <a class="btn btn-default okbtn" href="{% url "comment_approve" pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+            {% endif %}
+        </div>
+        <strong>{{ comment.author }}</strong>
+        <p class="comment">{{ comment.text|linebreaks }}</p>
+    </div>
+      {% endif %}
+      {% empty %}
+      <p>No comments here yet :(</p>
+      {% endfor %}
+          </div>
+
+        </div><!---Close row div-->
+
+      </div><!--close con-->
+
+</div><!--close container-->
+{% endblock %}
