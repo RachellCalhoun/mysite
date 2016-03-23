@@ -11,12 +11,65 @@ hr{
 	height:2px;
 	background-color: #747784;
 }
+.mypic {
+  max-width: 150px;
+  margin-top: 20px;
+}
 .navbar {
   width: 100%;
+  margin-bottom: 0;
 }
 .navbar ul {
 	font-size: 20px;
 	padding-top:15px;
+}
+.navbar1 .navbar-nav  li  a:focus, .navbar1 .navbar-nav > li > a:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+}
+.navbar2 .navbar-nav  li  a:focus, .navbar2 .navbar-nav > li > a:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/*navbar1 settings: */
+.navbar2 .navbar-nav > li > a {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    font-style:bold;
+}
+/*navbar1 font settings: */
+.navbar2 .navbar-brand, .navbar1{
+    color: white;
+}
+
+.navbar1{
+    margin:0px;
+    border-radius: 0px;
+    background: rgba(50, 50, 50, 0.25);
+    border-color: transparent;
+    color:white;
+}
+.navbar1 ul {
+    font-size: 20px;
+    padding-top: 15px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand {
+    color: white;
+}
+.navbar-default .navbar-brand:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.title {
+  padding-top: 20px;
 }
 .text-muted{
 	color: #BCBBBB;
@@ -32,11 +85,22 @@ hr{
 .title-logo{
 	margin-top:20px;
 }
+.blogimage {
+  margin-top: 15px;
+}
 .skillscontent{
 	border-width: 1px;
 	border: solid #747784;
 	padding:10px;
 	border-radius:5px;
+}
+
+.skillsheader {
+  padding-top: 20px;
+}
+
+.skillsbackground {
+  margin-bottom: 15px;
 }
 
 .projects {
@@ -45,8 +109,11 @@ hr{
   text-align: center;
   margin-top:1em;
   margin-bottom:auto;
-  min-height:300px;
+  min-height:500px;
+  max-height: 500px;
+  width: 500px;
   padding:1em;
+
 }
 
 .mceEditor > table {
@@ -68,8 +135,14 @@ hr{
 	max-width: 30%;
 }
 
+.skilltext{
+    font-size: 17px;
+    padding-top: 12px;
+}
 
-
+.text-white {
+  color: white;
+}
 
 .footer {
   margin-top:20px;
@@ -108,10 +181,35 @@ hr{
   .title-super{
 	font-size: 1.5em;
 	padding-bottom:.5em;
+  font-weight: 300;
   }
   .subtitle{
   	display:none;
   }
+  .description > h4 {
+    font-size: 14;
+  }
+  .description > h1 {
+    font-size: 20px;
+  }
+  .projects {
+      min-height:350px;
+       max-height: 350px;
+       width:100%;
+       overflow:hidden;
+  }
+  .projecttitle {
+    font-size: 25px;
+  }
+  .intro {
+    display: none;
+  }
+  .introtitle {
+    font-size: 20px;
+  }
+  .mceEditor > table {
+    min-width: 100% !important;
+}
 }
 
   @media (min-width: 768px) {

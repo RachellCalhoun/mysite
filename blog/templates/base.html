@@ -16,7 +16,7 @@
     <!--fonts and icons-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!--to get lato font-->
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,200,100' rel='stylesheet' type='text/css'>
     <!--bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -34,10 +34,14 @@
 </script>
       </head>
       <body>
-       <nav class="navbar navbar-inverse">
+
+      <div class="text-center titlebackground" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url({% static 'images/coding.jpg' %})
+        center 30% no-repeat;height:280px; ">
+
+       <nav class="navbar1 navbar-default">
           <div class="container-fluid">
             <div class="navbar-header navbar-right text-uppercase">
-              <a class="navbar-brand title-super " href="#">Rachell Calhoun</a>
+              <a class="navbar-brand title-super " href="/">Rachell Calhoun</a>
                 <h4 class= "subtitle">front-end ninja</h4>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                   <span class="sr-only">Toggle navigation</span>
@@ -49,7 +53,7 @@
               </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="/"><img src="images/favicon(1).ico">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
 
                 <li><a href="/#featured">Featured Work</a></li>
                 <li><a href="/#skillscontent">Skills</a></li>
@@ -71,6 +75,9 @@
           </div>
 
       </nav>
+     {% block header %} {% endblock %}
+       </div>
+
 
 
       {% block content %}
