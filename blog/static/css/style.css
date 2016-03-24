@@ -150,6 +150,11 @@ hr{
 .text-white {
   color: white;
 }
+.blogtitle {
+  background-image: linear-gradient(to bottom, #0F0C0C 0px, #222 100%);
+  margin-left: 65px;
+  height: 60px;
+}
 
 .footer {
   margin-top:20px;
@@ -226,6 +231,11 @@ hr{
   }
   .smallscreen{
     display:block;
+  }
+  .blogtitle {
+  background-image: linear-gradient(to bottom, #0F0C0C 0px, #222 100%);
+  margin-left: 0;
+  min-height: 90px;
   }
 }
 

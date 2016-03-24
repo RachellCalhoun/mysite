@@ -1,10 +1,16 @@
 
 {% extends "base.html" %}
-{% block menu %}
-<li><a href="/" >Home</a></li>
-<li><a href="/portfolio" >Portfolio</a></li>
-<li><a href="/skills" >Skills</a></li>
-<li  class ="active"><a href="/blog" >Blog</a></li>
+{% block header %}
+<div class="row">
+<div class="col-md-3"></div>
+  <div class="col-md-5">
+    <div class="blogtitle">
+     <h1 class="blog text-center text-white">My thoughts on some things</h1>
+     </div>
+  </div>
+  <div class="col-md-4">
+  </div>
+  </div>
 {% endblock %}
 {% block content%}
 
