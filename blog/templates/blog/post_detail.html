@@ -69,7 +69,7 @@
       <a class="btn btn-default addcommentbtn" href="{% url "add_comment_to_post" pk=post.pk %}">Add comment</a>
       {% endif %}
       {% empty %}
-      <p>No comments here yet :(</p>
+      <p>No comments here yet, <a class="btn btn-default addcommentbtn" href="{% url "add_comment_to_post" pk=post.pk %}">Add one!</a></p>
       {% endfor %}
           </div>
 
