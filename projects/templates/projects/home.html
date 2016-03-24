@@ -68,7 +68,7 @@
                     <h1 class="projecttitle">{{ project.title }}</h1>
                     {% endif %}
                     {% if project.text %}
-                    <h4>{{ project.text|linebreaks|truncatechars:100 }}</h4>
+                    <h4>{{ project.text|safe|truncatechars:100 }}</h4>
                     {% endif %}
                 </div>
             </div>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="modal-body">
                         <img class="img-responsive" style="min-width:100%" src="{{project.img.url}}">
-                        <p class="text-dark">{{project.text|linebreaks}}. </p>
+                        <p class="text-dark">{{project.text|safe}}. </p>
                            {% if project.link %}
                     <a href="{{ project.link }}"><p>{{project.link}}</p></a>
                     {% endif %}
@@ -108,7 +108,7 @@
                     <h1 class="projecttitle">{{ project.title }}</h1>
                     {% endif %}
                     {% if project.text %}
-                    <h4>{{ project.text|linebreaks|truncatechars:100 }}</h4>
+                    <h4>{{ project.text|safe|truncatechars:100 }}</h4>
                     {% endif %}
                 </div>
             </div>
@@ -124,7 +124,7 @@
                 </div>
                 <div class="modal-body">
                     <img class="img-responsive" style="min-width:100%" src="{{project.img.url}}">
-                    <p class="text-dark">{{project.text|linebreaks}}. </p>
+                    <p class="text-dark">{{project.text|safe}}. </p>
                      {% if project.link %}
                     <a href="{{ project.link }}"><p>{{project.link}}</p></a>
                     {% endif %}
