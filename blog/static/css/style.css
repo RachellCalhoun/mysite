@@ -55,22 +55,21 @@ hr{
     background-color: transparent;
     text-decoration: underline;
 }
-.navbar-nav  li  a:focus, .navbar-nav > li > a:hover {
+.navbar2 .navbar-nav  li  a:focus, .navbar2 .navbar-nav > li > a:hover {
     color: white;
     background-color: transparent;
     text-decoration: underline;
 }
 
 /*navbar1 font settings: */
-.navbar-brand, .navbar1, .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+.navbar2 .navbar-brand, .navbar1{
     color: white;
 }
 
-
-.navbar1{
+.navbar1 {
     margin:0px;
     border-radius: 0px;
-    background: rgba(50, 50, 50, 0.25);
+    background: rgba(50, 50, 50, 0.75);
     border-color: transparent;
     color:white;
 }
@@ -88,10 +87,10 @@ hr{
     color: white;
     text-decoration: underline;
 }
-
-.navbar-default .navbar-collapse {
-  background: rgba(50, 50, 50, 0.75);;
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+  color:white;
 }
+
 .title {
   padding-top: 20px;
 }
