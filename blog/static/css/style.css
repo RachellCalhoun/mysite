@@ -181,7 +181,14 @@ hr{
   display:block;
   margin:auto;
   max-height: 400px;
+}
 
+.content img {
+  margin-top: 15px;
+  padding-top:2em;
+  display:block;
+  margin:auto;
+  max-height: 400px;
 }
 .blogheader {
   background:   url("../images/writingblog.jpg") center 58% no-repeat;
