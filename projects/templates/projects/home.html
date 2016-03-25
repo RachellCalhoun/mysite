@@ -1,48 +1,54 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-
 {% block header %}
-        <div class="row titlerow bigscreen">
+<div class="text-center titlebackground homebackground">
+    <div class="bigscreen">
+        <div class="row titlerow ">
         <div class="col-md-3 text-center">
-        <img class="img-responsive img-circle mypic center-block " src="https://avatars2.githubusercontent.com/u/10239547?v=3&s=460">
         </div>
           <div class="col-md-5 ">
-            <div class="socialmedia">
-                 <ul class="text-muted  list-inline" style="none">
-              <li><a href="mailto:rachell.calhoun@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
-                <li><a href="https://www.linkedin.com/pub/rachell-calhoun/5a/352/79"><span><i class="fa fa-linkedin-square" alt="LinkedIn"></i></span></a></li>
-                <li><a href="https://github.com/RachellCalhoun" class="github"> <span><i class="fa fa-github" alt ="Github"></i></span></a></li>
-                <li><a href="https://twitter.com/Rachell_Calhoun" class="twitter"> <span><i class="fa fa-twitter" alt ="Twitter"></i></span></a></li>
-            </ul>
+            <div class="socialmedia text-center">
+            <img class="img-responsive img-circle mypic center-block " src="https://avatars2.githubusercontent.com/u/10239547?v=3&s=460">
 
+               <!--  <ul class="text-muted  list-inline bigscreen" style="none">
+                    <li><a href="mailto:rachell.calhoun@gmail.com"><span class="fa fa-envelope-o fa-3x" aria-hidden="true"></span></a></li>
+                    <li><a href="https://www.linkedin.com/pub/rachell-calhoun/5a/352/79"><span><i class="fa fa-linkedin-square fa-3x" alt="LinkedIn"></i></span></a></li>
+                    <li><a href="https://github.com/RachellCalhoun" class="github"> <span><i class="fa fa-github fa-3x" alt ="Github"></i></span></a></li>
+                    <li><a href="https://twitter.com/Rachell_Calhoun" class="twitter"> <span><i class="fa fa-twitter fa-3x" alt ="Twitter"></i></span></a></li>
+                </ul> -->
+                <ul class="text-muted  list-inline " style="none">
+                    <li><a href="mailto:rachell.calhoun@gmail.com"><span class="fa fa-envelope-o fa-lg" aria-hidden="true"></span></a></li>
+                    <li><a href="https://www.linkedin.com/pub/rachell-calhoun/5a/352/79"><span><i class="fa fa-linkedin-square fa-lg" alt="LinkedIn"></i></span></a></li>
+                    <li><a href="https://github.com/RachellCalhoun" class="github"> <span><i class="fa fa-github fa-lg" alt ="Github"></i></span></a></li>
+                    <li><a href="https://twitter.com/Rachell_Calhoun" class="twitter"> <span><i class="fa fa-twitter fa-lg" alt ="Twitter"></i></span></a></li>
+                </ul>
             </div>
-          <!-- <h1 class="text-white introtitle">I'm awesome check me out</h1> -->
-          <!--  <p class="text-white intro">The TinyMCE widget can be enabled by setting it as the widget for a formfield. For example, to use a nice big TinyMCE widget for the content field of a flatpage form you could use the following code:</p> -->
+
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-4"></div>
         </div>
-        <div class="row titlerow  smallscreen">
+    </div>
+        <div class="smallscreen">
+        <div class="row titlerow ">
+        <div class="col-md-3 text-center">
+                <img class="img-responsive img-circle mypic center-block " src="https://avatars2.githubusercontent.com/u/10239547?v=3&s=460">
+            </div>
+        </div>
           <div class="col-md-5 ">
-            <div class="socialmedia">
-                 <ul class="text-muted  list-inline" style="none">
-              <li><a href="mailto:rachell.calhoun@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
-                <li><a href="https://www.linkedin.com/pub/rachell-calhoun/5a/352/79"><span><i class="fa fa-linkedin-square" alt="LinkedIn"></i></span></a></li>
-                <li><a href="https://github.com/RachellCalhoun" class="github"> <span><i class="fa fa-github" alt ="Github"></i></span></a></li>
-                <li><a href="https://twitter.com/Rachell_Calhoun" class="twitter"> <span><i class="fa fa-twitter" alt ="Twitter"></i></span></a></li>
-            </ul>
-
+            <div class="socialmedia ">
+                <ul class="text-muted  list-inline" style="none">
+                    <li><a href="mailto:rachell.calhoun@gmail.com"><span class="fa fa-envelope-o" aria-hidden="true"></span></a></li>
+                    <li><a href="https://www.linkedin.com/pub/rachell-calhoun/5a/352/79"><span><i class="fa fa-linkedin-square" alt="LinkedIn"></i></span></a></li>
+                    <li><a href="https://github.com/RachellCalhoun" class="github"> <span><i class="fa fa-github" alt ="Github"></i></span></a></li>
+                    <li><a href="https://twitter.com/Rachell_Calhoun" class="twitter"> <span><i class="fa fa-twitter" alt ="Twitter"></i></span></a></li>
+                </ul>
             </div>
-            <div class="col-md-3 text-center">
-        <img class="img-responsive img-circle mypic center-block " src="https://avatars2.githubusercontent.com/u/10239547?v=3&s=460">
-        </div>
-          <!-- <h1 class="text-white introtitle">I'm awesome check me out</h1> -->
-          <!--  <p class="text-white intro">The TinyMCE widget can be enabled by setting it as the widget for a formfield. For example, to use a nice big TinyMCE widget for the content field of a flatpage form you could use the following code:</p> -->
-        </div>
-        <div class="col-md-2"></div>
-        </div>
 
-
+        </div>
+        <div class="col-md-4"></div>
+        </div>
+</div>
 {% endblock %}
 {% block content %}
 <div class="container featuredworkcontainer">
@@ -50,7 +56,7 @@
 
 			<div class="row title-row" id="featured">
 			<div class="col-md-12">
-				<h2 class="text-muted ">Featured Work</h2>
+				<h2 class="text-muted text-center">Featured Work</h2>
 			</div>
 		</div>
     {% for project in entries %}
