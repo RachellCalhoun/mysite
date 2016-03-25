@@ -167,8 +167,17 @@ hr{
 .text-white {
   color: white;
 }
+.text-black {
+  color:black;
+  font-family: 'Cedarville Cursive', cursive;
+}
+
+.publisheddate {
+  padding-top: 7em;
+}
 .blogimage {
   margin-top: 15px;
+
 }
 .blogheader {
   background:   url("../images/writingblog.jpg") center 58% no-repeat;

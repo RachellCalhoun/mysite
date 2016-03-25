@@ -2,49 +2,48 @@
 {% load staticfiles %}
 
 {% block header %}
-    <div class="row">
 
-      <div class="col-md-2"></div>
-        <div class="col-md-8 text-center">
-          <h1 class="title text-white">{{ post.title }}</h1>
-          <p><a href="/blog">Back</a></p>
+<div class="titlebackground blogheader">
 
-        </div>
-        </div><!--close row-->
+    <div class="row titlerow">
+    <div class="col-sm-2"></div>
+          <div class="col-sm-3 center-block">
+            <div class="blogtitle">
+              <h1 class="">{{ post.title }} <span class="sign text-right"><a href="/blog">Back</a> </span></h1>
 
- <div class="row">
-  <div class="col-md-6">
-            {% if post.published_date %}
-              <h4 class="text-white">Published: {{ post.published_date }}</h4>
-              <h4 class="text-white"> Author: {{post.author }}</h4>
+
+            </div>
+          </div>
+        <div class="col-sm-7 text-center publisheddate">
+          {% if post.published_date %}
+              <h4 class="text-black">Published: {{ post.published_date }}</h4>
+              <h4 class="text-black"> Author: {{post.author }}</h4>
               {% else %}
               {% if user.is_authenticated %}
               <a class="btn btn-default publishbtn" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>
               {% endif %}
             {% endif %}
-  </div><!--close date-->
-
-          <div class="col-md-6">
-          {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
           <a class="btn btn-default editbtn" href="{% url "post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
           <a class="btn btn-default deletebtn" href="{% url "post_remove" pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
           {% endif %}
-          </div>
+        </div><!--close date-->
+        </div>
+</div>
 
-        </div><!--close row-->
 {% endblock %}
 {% block content %}
 <div class="container main">
       <div class="row">
-        <div class="col-md-2"></div>
-          <div class="col-md-8 content">
-
-          {%if post.img %} <img class = "img-responsive img-rounded blogimage" src="{{post.img.url}}">  {% endif %}
+        <!-- <div class="col-md-2"></div> -->
+          <div class="col-md-8 content ">
+          {%if post.img %} <img class = "img-responsive img-rounded text-center blogimage" src="{{post.img.url}}">  {% endif %}
           <p class="blogcontent">{{ post.text|safe }}</p>
+
           </div>
           <div class="col-md-2"></div>
-        </div> <!--close the row-->
-
+        <!--close the row-->
+        </div>
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
