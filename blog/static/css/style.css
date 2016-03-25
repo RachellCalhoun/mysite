@@ -364,7 +364,13 @@ hr{
     margin-left:10em;
     margin-top:4em;
    }
-
+   .bigscreen {
+    display:block;
+   }
+   .smallscreen {
+    display:none;
+   }
+  }
 @media (min-width: 992px) {
   .bigscreen {
     display: block;

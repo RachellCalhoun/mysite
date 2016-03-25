@@ -9,8 +9,8 @@
     <div class="col-sm-2"></div>
           <div class="col-sm-3 center-block">
             <div class="blogtitle">
-              <h1 class="">{{ post.title }} <span class="sign text-right"><a href="/blog">Back</a> </span></h1>
-
+              <h1 class="">{{ post.title }} </h1>
+              <h4><span class="sign text-right"><a href="/blog">Back</a> </span></h4>
 
             </div>
           </div>
@@ -35,7 +35,7 @@
 {% block content %}
 <div class="container main">
       <div class="row">
-        <!-- <div class="col-md-2"></div> -->
+        <div class="col-md-2"></div>
           <div class="col-md-8 content ">
           {%if post.img %} <img class = "img-responsive img-rounded text-center blogimage" src="{{post.img.url}}">  {% endif %}
           <p class="blogcontent">{{ post.text|safe }}</p>
