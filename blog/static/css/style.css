@@ -177,6 +177,10 @@ hr{
 }
 .blogimage {
   margin-top: 15px;
+  padding-top:2em;
+  display:block;
+  margin:auto;
+  max-height: 400px;
 
 }
 .blogheader {
