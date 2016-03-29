@@ -65,10 +65,38 @@
     </div>
       {% endif %}
       {% if forloop.last %}
-      <a class="btn btn-default addcommentbtn" href="{% url "add_comment_to_post" pk=post.pk %}">Add comment</a>
+
+         <div class="container addcommentmain">
+
+    <div class="row">
+      <div class="col-md-8 content main">
+      <h3 class="title">New Comment</h3>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="addcommentbtn save btn btn-default">Submit Comment</button>
+    </form>
+    </div><!--close 8col-->
+
+    </div><!--close row-->
+    </div><!--close container-->
       {% endif %}
       {% empty %}
-      <p>No comments here yet, <a class="btn btn-default addcommentbtn" href="{% url "add_comment_to_post" pk=post.pk %}">Add one!</a></p>
+
+       <div class="container addcommentmain">
+
+    <div class="row">
+      <div class="col-md-8 content main">
+       <p>No comments here yet</p>
+      <h3 class="title">New Comment</h3>
+      <p><a href="/blog">Back</a></p>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="addcommentbtn save btn btn-default">Submit Comment</button>
+    </form>
+    </div><!--close 8col-->
+     <div class="col-md-2"></div>
+    </div><!--close row-->
+    </div><!--close container-->
       {% endfor %}
           </div>
 
