@@ -69,12 +69,13 @@
                 {% endif %}
                 <div class="description">
                    {% if project.link %}
-                    <a href="{{project.link}}"><h1 class="projecttitle">{{ project.title }}</h1></a>
+                    <h1 class="projecttitle">{{ project.title }}</h1>
                     {% else %}
                     <h1 class="projecttitle">{{ project.title }}</h1>
                     {% endif %}
                     {% if project.text %}
                     <h4>{{ project.text|safe|truncatechars:100 }}</h4>
+                    <a href="{{project.link}}"><h4>{{project.link}}</h4></a>
                     {% endif %}
                 </div>
             </div>
@@ -108,13 +109,14 @@
                 <img class = "img-responsive img-rounded center-block catimage"  data-target="#{{project.pk}}" data-toggle="modal" class="img-responsive thumbnail center-block" alt="cute skills" src="{{ project.img.url }}">
                 {% endif %}
                 <div class="description">
-                	{% if project.link %}
-                    <a href="{{project.link}}"><h1 class="projecttitle">{{ project.title }}</h1></a>
+                   {% if project.link %}
+                    <h1 class="projecttitle">{{ project.title }}</h1>
                     {% else %}
                     <h1 class="projecttitle">{{ project.title }}</h1>
                     {% endif %}
                     {% if project.text %}
                     <h4>{{ project.text|safe|truncatechars:100 }}</h4>
+                    <a href="{{project.link}}"><h4>{{project.link}}</h4></a>
                     {% endif %}
                 </div>
             </div>
