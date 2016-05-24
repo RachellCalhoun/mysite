@@ -36,7 +36,7 @@
 <div class="container main">
       <div class="row">
         <div class="col-md-2"></div>
-          <div class="col-md-8 content ">
+          <div class="col-md-8 content">
           {%if post.img %} <img class = "img-responsive img-rounded text-center blogimage" src="{{post.img.url}}">  {% endif %}
           <p class="blogcontent">{{ post.text|safe }}</p>
 
@@ -45,8 +45,8 @@
         <!--close the row-->
         </div>
       <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+      <div class="col-md-2"></div>
+        <div class="col-md-8 content">
 
 
           {% for comment in post.comments.all %}
@@ -66,7 +66,7 @@
       {% endif %}
       {% if forloop.last %}
 
-         <div class="container addcommentmain">
+
 
     <div class="row">
       <div class="col-md-8 content main">
@@ -78,11 +78,10 @@
     </div><!--close 8col-->
 
     </div><!--close row-->
-    </div><!--close container-->
+   <!--  </div> --><!--close container-->
       {% endif %}
       {% empty %}
 
-       <div class="container addcommentmain">
 
     <div class="row">
       <div class="col-md-8 content main">
@@ -94,12 +93,13 @@
         <button type="submit" class="addcommentbtn save btn btn-default">Submit Comment</button>
     </form>
     </div><!--close 8col-->
-     <div class="col-md-2"></div>
+
     </div><!--close row-->
-    </div><!--close container-->
+
       {% endfor %}
           </div>
 
         </div><!---Close row div-->
-</div><!--close container-->
+        </div>
+
 {% endblock %}
