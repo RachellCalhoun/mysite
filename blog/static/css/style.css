@@ -15,35 +15,6 @@ hr{
 	background-color: #747784;
 }
 
-.homebackground {
-    background: url("../images/macbook.jpeg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    color: white;
-    font-size: 2em;
-    margin-bottom: 4em;
-    font-family: 'Lato', sans-serif;
-    font-weight: 500;
-    height: 100vh;
-}
-.bigscreen .socialmedia {
-  margin-top: 3em;
-  padding-left: 1.5em;
-}
-
-.socialmedia li a{
-  padding: .5em;
-}
-.bigscreen .mypic {
-  max-width: 150px;
-}
-
-.smallscreen .mypic {
-  max-width: 150px;
-  margin-top: 3em;
-}
 
 .navbar {
   width: 100%;
@@ -141,7 +112,7 @@ hr{
 }
 
 .mceEditor > table {
-    min-width: 700px !important;
+    min-width: 700px ;
 }
 .title-row {
 	margin-top:2em;
@@ -289,12 +260,7 @@ hr{
     padding:0;
     margin:0;
   }
-  .bigscreen {
-    display:none;
-  }
-  .smallscreen{
-    display:block;
-  }
+
   .blogheader {
     background-position:  35% 70%;
   }
@@ -381,9 +347,9 @@ hr{
    .bigscreen {
     display:block;
    }
-   .smallscreen {
+   /*.smallscreen {
     display:none;
-   }
+   }*/
   }
 @media (min-width: 992px) {
   .bigscreen {
