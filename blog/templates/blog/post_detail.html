@@ -7,21 +7,24 @@
     <div class="row titlerow">
 
         <div class="col-md-12  text-white">
-          <div class="blogtitle">
+          <div class="blogtitle ">
               <h1 class="">{{ post.title }} </h1>
               {% if post.published_date %}
-              <h4 class="text-black">Published: {{ post.published_date }}</h4>
-              <h4 class="text-black"> Author: {{post.author }}</h4>
+              <h4 class="text-black">Published: {{ post.published_date }} <a href="/blog">Back</a></h4>
+              <h4 class="text-black"> Author: {{post.author }}
               {% else %}
               {% if user.is_authenticated %}
               <a class="btn btn-default publishbtn" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>
               {% endif %}
             {% endif %}
             {% if user.is_authenticated %}
+
           <a class="btn btn-default editbtn" href="{% url "post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
           <a class="btn btn-default deletebtn" href="{% url "post_remove" pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
           {% endif %}
-          <h4 class="text-center"><a href="/blog">Back</a> </h4>
+          </h4>
+
+
           </div>
         </div>
 

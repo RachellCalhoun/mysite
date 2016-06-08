@@ -82,6 +82,9 @@ hr{
 .title-logo{
 	margin-top:20px;
 }
+.subtitle {
+  padding-left:1em;
+}
 
 .skillscontent{
 	border-width: 1px;
@@ -147,13 +150,13 @@ hr{
 .publisheddate {
   padding-top: 7em;
 }
-.blogimage {
+/*.blogimage {
   margin-top: 15px;
   padding-top:2em;
   display:block;
   margin:auto;
   max-height: 400px;
-}
+}*/
 
 .blogheader {
   background:   url("../images/coffee2.jpg") center 57% no-repeat;
@@ -164,16 +167,16 @@ hr{
 .blogtitle, .post-list-title {
   color: black;
   font-family: 'Cedarville Cursive', cursive;
-  -ms-transform: rotate(-15deg); /* IE 9 */
-    -webkit-transform: rotate(-15deg); /* Safari */
-    transform: rotate(-15deg);
+  -ms-transform: rotate(-10deg); /* IE 9 */
+    -webkit-transform: rotate(-10deg); /* Safari */
+    transform: rotate(-10deg);
   width: 50%;
   display:block;
   margin: 0 auto;
-  padding-top: 7em;
+  margin-top: 7em;
 }
 .blogtitle {
-  padding-top:5em;
+  margin-top:7em;
 }
 
 .blogtitle > h1, .blogtitle > h4 {
@@ -248,9 +251,17 @@ display: block;
   .introtitle {
     font-size: 20px;
   }
-  .mceEditor > table {
-    min-width: 100% !important;
+
+ /* table.mceLayout, textarea.tinyMCE {
+    width: 100% !important;
   }
+*/
+/* on large screens, I use a different layout, so 600px are sufficient */
+/*@media only screen and (min-width: 600px) {
+    table.mceLayout, textarea.richEditor {
+       width: 600px !important;
+    }
+}*/
   .blogheader {
     background-position:  35% 70%;
   }
@@ -279,7 +290,7 @@ display: block;
     .post-list-title, .blogtitle {
       width: 100%;
       text-align: center;
-      margin: 0;
+
       padding-right:0;
       padding-left:0;
     }
