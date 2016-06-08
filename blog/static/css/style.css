@@ -179,11 +179,12 @@ hr{
 .blogtitle > h1, .blogtitle > h4 {
   margin-left: 1em;
 }
-.content > p > img, .content > p > span > img {
+.content img {
 max-width: 100%;
 height: auto;
 display: block;
 }
+
 .footer {
   margin-top:20px;
   bottom: 0;
