@@ -155,13 +155,6 @@ hr{
   max-height: 400px;
 }
 
-/*.content img {
-  margin-top: 15px;
-  padding-top:2em;
-  display:block;
-  margin:auto;
-  max-height: 400px;
-}*/
 .blogheader {
   background:   url("../images/coffee2.jpg") center 57% no-repeat;
   height:280px;
@@ -186,7 +179,7 @@ hr{
 .blogtitle > h1, .blogtitle > h4 {
   margin-left: 1em;
 }
-.content > p > img {
+.content > p > img, .content > p > span > img {
 max-width: 100%;
 height: auto;
 display: block;
