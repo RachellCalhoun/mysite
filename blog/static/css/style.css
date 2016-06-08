@@ -252,16 +252,6 @@ display: block;
     font-size: 20px;
   }
 
- /* table.mceLayout, textarea.tinyMCE {
-    width: 100% !important;
-  }
-*/
-/* on large screens, I use a different layout, so 600px are sufficient */
-/*@media only screen and (min-width: 600px) {
-    table.mceLayout, textarea.richEditor {
-       width: 600px !important;
-    }
-}*/
   .blogheader {
     background-position:  35% 70%;
   }
