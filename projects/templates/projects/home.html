@@ -141,7 +141,7 @@
 				</div>
 				<div class="col-md-10">
 					{% if skill.text %}
-					<p class="skilltext">{{ skill.text }} </p>
+					<p class="skilltext">{{ skill.text|safe }} </p>
 					{% endif %}
 				</div>
 			</div>

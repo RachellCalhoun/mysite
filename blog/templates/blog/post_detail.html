@@ -66,10 +66,6 @@
       {% endif %}
       {% if forloop.last %}
 
-
-
-    <div class="row">
-      <div class="col-md-8 content main">
       <h3 class="title">New Comment</h3>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
@@ -82,9 +78,7 @@
       {% endif %}
       {% empty %}
 
-
-    <div class="row">
-      <div class="col-md-8 content main">
+      <hr>
        <p>No comments here yet</p>
        <hr>
       <h3 class="title">New Comment</h3>
@@ -99,7 +93,7 @@
       {% endfor %}
           </div>
 
-        </div><!---Close row div-->
+        </div>
         </div>
 
 {% endblock %}
