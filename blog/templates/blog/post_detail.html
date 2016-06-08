@@ -86,8 +86,8 @@
     <div class="row">
       <div class="col-md-8 content main">
        <p>No comments here yet</p>
+       <hr>
       <h3 class="title">New Comment</h3>
-      <p><a href="/blog">Back</a></p>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="addcommentbtn save btn btn-default">Submit Comment</button>
