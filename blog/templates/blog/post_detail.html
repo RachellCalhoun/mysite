@@ -68,9 +68,11 @@
 
       <h3 class="title">New Comment</h3>
     <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="addcommentbtn save btn btn-default">Submit Comment</button>
-    </form>
+          <p><label for="id_author">Author:</label> <input id="id_author" maxlength="200" name="author" type="text"></p>
+          <p><label for="id_text">Text:</label> <textarea cols="40" id="id_text" name="text" rows="10"></textarea></p>
+
+          <button type="submit" class="save btn btn-default">Submit</button>
+      </form>
     </div><!--close 8col-->
 
     </div><!--close row-->
@@ -82,10 +84,12 @@
        <p>No comments here yet</p>
        <hr>
       <h3 class="title">New Comment</h3>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="addcommentbtn save btn btn-default">Submit Comment</button>
-    </form>
+       <form method="POST" class="post-form">{% csrf_token %}
+          <p><label for="id_author">Author:</label> <input id="id_author" maxlength="200" name="author" type="text"></p>
+          <p><label for="id_text">Text:</label> <textarea cols="40" id="id_text" name="text" rows="10"></textarea></p>
+
+          <button type="submit" class="save btn btn-default">Submit</button>
+      </form>
     </div><!--close 8col-->
 
     </div><!--close row-->
