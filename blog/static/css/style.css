@@ -150,13 +150,15 @@ hr{
 .publisheddate {
   padding-top: 7em;
 }
-/*.blogimage {
-  margin-top: 15px;
-  padding-top:2em;
+
+.blogimage {
+  
+  padding:2em;
   display:block;
   margin:auto;
   max-height: 400px;
-}*/
+  border-radius: 50px;
+}
 
 .blogheader {
   background:   url("../images/coffee2.jpg") center 57% no-repeat;
