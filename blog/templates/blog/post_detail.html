@@ -67,11 +67,21 @@
       {% if forloop.last %}
 
       <h3 class="title">New Comment</h3>
-    <form method="POST" class="post-form">{% csrf_token %}
+        <form method="POST" class="post-form" id="commentform" >{% csrf_token %}
           <p><label for="id_author">Author:</label> <input id="id_author" maxlength="200" name="author" type="text"></p>
           <p><label for="id_text">Text:</label> <textarea cols="40" id="id_text" name="text" rows="10"></textarea></p>
-
-          <button type="submit" class="save btn btn-default">Submit</button>
+          <button type="submit"
+        class="g-recaptcha save btn btn-default"
+        data-sitekey="6LcXVy0UAAAAACSKENWRUX-POo1H8EsdnDp-R5qx"
+        data-callback="submitcomment">
+        Submit
+        </button>
+        <script>
+        function submitcomment(){
+            document.getElementById('commentform').submit()
+        }
+    </script>
+         
       </form>
     </div><!--close 8col-->
 
@@ -84,11 +94,21 @@
        <p>No comments here yet</p>
        <hr>
       <h3 class="title">New Comment</h3>
-       <form method="POST" class="post-form">{% csrf_token %}
+       <form method="POST" class="post-form" id="commentform">{% csrf_token %}
           <p><label for="id_author">Author:</label> <input id="id_author" maxlength="200" name="author" type="text"></p>
           <p><label for="id_text">Text:</label> <textarea cols="40" id="id_text" name="text" rows="10"></textarea></p>
-
-          <button type="submit" class="save btn btn-default">Submit</button>
+          <button type="submit"
+        class="g-recaptcha save btn btn-default"
+        data-sitekey="6LcXVy0UAAAAACSKENWRUX-POo1H8EsdnDp-R5qx"
+        data-callback="submitcomment">
+        Submit
+        </button>
+        <script>
+        function submitcomment(){
+            document.getElementById('commentform').submit()
+        }
+    </script>
+         
       </form>
     </div><!--close 8col-->
 
