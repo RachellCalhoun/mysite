@@ -161,9 +161,11 @@ hr{
 }
 
 .blogheader {
-  background:   url("../images/coffee2.jpg") center 57% no-repeat;
+  background-image:  url("../images/coffee2.jpg");
   height:280px;
-  width:100%;
+  background-position: center;
+  background-size:cover;
+  font-weight: 400;
 }
 
 .blogtitle, .post-list-title {
