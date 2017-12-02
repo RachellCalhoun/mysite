@@ -70,18 +70,13 @@
         <form method="POST" class="post-form" id="commentform" >{% csrf_token %}
           <p><label for="id_author">Author:</label> <input id="id_author" maxlength="200" name="author" type="text"></p>
           <p><label for="id_text">Text:</label> <textarea cols="40" id="id_text" name="text" rows="10"></textarea></p>
-          <button type="submit"
-        class="g-recaptcha save btn btn-default"
-        data-sitekey="6LcXVy0UAAAAACSKENWRUX-POo1H8EsdnDp-R5qx"
-        data-callback="submitcomment">
-        Submit
-        </button>
-        <script>
+          <button type="submit"> Submit</button>
+        <!-- <script>
         function submitcomment(){
             document.getElementById('commentform').submit()
         }
-    </script>
-         
+    </script> -->
+
       </form>
     </div><!--close 8col-->
 
@@ -97,18 +92,18 @@
        <form method="POST" class="post-form" id="commentform">{% csrf_token %}
           <p><label for="id_author">Author:</label> <input id="id_author" maxlength="200" name="author" type="text"></p>
           <p><label for="id_text">Text:</label> <textarea cols="40" id="id_text" name="text" rows="10"></textarea></p>
-          <button type="submit"
-        class="g-recaptcha save btn btn-default"
-        data-sitekey="6LcXVy0UAAAAACSKENWRUX-POo1H8EsdnDp-R5qx"
-        data-callback="submitcomment">
+          <button type="submit">
+                    <!-- class="g-recaptcha save btn btn-default"
+        data-sitekey="6LfllDgUAAAAAF0faUPPDud4HZb2OKtIYkvouMLF"
+        data-callback="submitcomment" -->
         Submit
         </button>
-        <script>
+        <!-- <script>
         function submitcomment(){
             document.getElementById('commentform').submit()
         }
-    </script>
-         
+    </script> -->
+
       </form>
     </div><!--close 8col-->
 
