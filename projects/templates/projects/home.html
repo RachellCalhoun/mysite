@@ -3,7 +3,7 @@
 
 {% block header %}
 
-<div class="row titlerow ">
+<div class="avatar-row" id="about">
     <div class="col-md-12 text-center">
         <img class="img-responsive mypic center-block " src="https://assets.toptal.io/uploads/blog/image/92510/toptal-blog-image-1463492564587-353a3c288892f1e43929cee358dbc24f.gif">
     </div>
@@ -13,9 +13,7 @@
 {% endblock %}
 {% block content %}
 <div class="container featuredworkcontainer">
-
-
-			<div class="row title-row" id="featured">
+			<div class="title-row row" id="featured">
 			<div class="col-md-12">
 				<h2 class="text-muted text-center">Featured Work</h2>
 			</div>
@@ -24,12 +22,12 @@
     {% if forloop.counter0|divisibleby:2 %}
     <div class="row">
         <div class="col-md-6">
-            <div class="projects center-block">
+        <div class="projects center-block">
                 {% if project.img %}
                 <img class = "img-responsive img-rounded center-block catimage" data-target="#{{project.pk}}" data-toggle="modal" class="img-responsive thumbnail center-block" alt="cute skills" src="{{ project.img.url }}">
                 {% endif %}
                 <div class="description">
-                   {% if project.link %}
+                {% if project.link %}
                     <h1 class="projecttitle">{{ project.title }}</h1>
                     {% else %}
                     <h1 class="projecttitle">{{ project.title }}</h1>
@@ -70,7 +68,7 @@
                 <img class = "img-responsive img-rounded center-block catimage"  data-target="#{{project.pk}}" data-toggle="modal" class="img-responsive thumbnail center-block" alt="cute skills" src="{{ project.img.url }}">
                 {% endif %}
                 <div class="description">
-                   {% if project.link %}
+                {% if project.link %}
                     <h1 class="projecttitle">{{ project.title }}</h1>
                     {% else %}
                     <h1 class="projecttitle">{{ project.title }}</h1>
@@ -118,14 +116,15 @@
 {% endfor %}
 
 
-
-      <div class="text-center titlebackground skillsbackground" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url({% static 'images/coding.jpg' %})
-        center 40% no-repeat;height:200px; ">
+<div class="container">
+    <div id="skillstitle-container" class="text-center titlebackground skillsbackground" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url({% static 'images/coding.jpg' %})
+        center 40% no-repeat;height:200px; border-radius:5px;">
 		<div class="row title-row">
 			<div class="col-md-12">
 			<h1 class="text-white skillsheader" id="skillscontent">Skills</h1>
 			</div>
-		</div>
+        </div>
+    </div>
 </div>
 <div class="container">
 		<div class="skillscontent" >

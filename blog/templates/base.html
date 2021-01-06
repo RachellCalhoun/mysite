@@ -43,15 +43,15 @@
       <!--custom style sheet-->
 
       <link href="{% static 'css/style.css' %}" rel="stylesheet">
-      <link href="{% static 'blog/style.css' %}" rel="stylesheet">
-        <script src='https://www.google.com/recaptcha/api.js'></script>
+
+        <!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
 
       </head>
       <body>
 
        <nav class="navbar1 navbar-default navbar-fixed-top">
           <div class="container-fluid">
-            <div class="navbar-header navbar-right text-uppercase">
+            <div class="navbar-header navbar-right">
               <a class="navbar-brand title-super " href="/">Rachell Calhoun</a>
                 <!-- <h4 class= "subtitle">Web-Dev Ninja</h4> -->
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -64,7 +64,7 @@
               </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
+                <li class="active"><a href="/#about">Home</a></li>
 
                 <li><a href="/#featured">Featured Work</a></li>
                 <li><a href="/#skillscontent">Skills</a></li>
@@ -89,7 +89,7 @@
 
       </div>
         <footer class="footer">
-        <div class="row">
+        <div class="row" style="margin-right:0;">
           <div class="col-md-12">
            <ul class="text-muted text-right list-inline" style="none">
               <li><a href="mailto:rachell.calhoun@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
@@ -102,14 +102,14 @@
     </footer>
        <!-- <script src="http://code.jquery.com/jquery.js"></script>-->
         <!-- Latest compiled and minified JavaScript -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
          {{ form.media }}
        <script type="text/javascript">
-        tinyMCE.init({
-                mode: "textareas",
-                theme: "advanced"
+          tinyMCE.init({
+                  mode: "textareas",
+                  theme: "advanced"
 
-        });
+          });
         </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
