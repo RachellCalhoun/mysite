@@ -6,6 +6,7 @@
 <div class="avatar-row" id="about">
     <div class="col-md-12 text-center">
         <img class="img-responsive mypic center-block " src="https://assets.toptal.io/uploads/blog/image/92510/toptal-blog-image-1463492564587-353a3c288892f1e43929cee358dbc24f.gif">
+        <h3>Rachell is a software engineer, data scientist, and community organizer.</h3>
     </div>
 </div>
 
@@ -15,7 +16,7 @@
 <div class="container featuredworkcontainer">
 			<div class="title-row row">
 			<div id="featured" class="col-md-12">
-				<h2 class="text-muted text-center">Featured Work</h2>
+				<h2 class="text-muted text-center">Projects</h2>
 			</div>
 		</div>
     {% for project in entries %}
@@ -115,42 +116,6 @@
 {% endif %}
 {% endfor %}
 
-
-<div class="container">
-    <div id="skillstitle-container" class="text-center titlebackground skillsbackground" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url({% static 'images/coding.jpg' %})
-        center 40% no-repeat;height:200px; border-radius:5px;">
-		<div class="row title-row">
-			<div class="col-md-12">
-			<h1 class="text-white skillsheader" id="skillscontent">Skills</h1>
-			</div>
-        </div>
-    </div>
-</div>
-<div class="container">
-		<div class="skillscontent" >
-		{% for skill in skills %}
-			<div class="row">
-				<div class="col-md-2 ">
-					<div class="skill-images center-block">
-					{% if skill.img %}
-						<img src="{{ skill.img.url }}" class="center-block img-responsive">
-					{% endif %}
-					<h4>{{ skill.title }}</h4>
-					</div>
-				</div>
-				<div class="col-md-10">
-					{% if skill.text %}
-					<p class="skilltext">{{ skill.text|safe }} </p>
-					{% endif %}
-				</div>
-			</div>
-				{% if not forloop.last %}
-			<hr>
-		{% endif %}
-
-			{% endfor %}
-		</div>
-</div><!--container-->
 
 
 {% endblock %}
