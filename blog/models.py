@@ -3,7 +3,7 @@ from django.utils import timezone
 from tinymce import models as tinymce_models
 
 class Post(models.Model):
-    author= models.ForeignKey('auth.User')
+    author= models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = tinymce_models.HTMLField()
     created_date = models.DateTimeField(default=timezone.now)
@@ -21,7 +21,7 @@ class Post(models.Model):
         return self.comments.filter(approved_comment=True)
 
 class Comment(models.Model):
-    post = models.ForeignKey('blog.Post', related_name='comments')
+    post = models.ForeignKey('blog.Post', related_name='comments', on_delete=models.CASCADE)
     author = models.CharField(max_length=200)
     text = tinymce_models.HTMLField()
     created_date = models.DateTimeField(default=timezone.now)
