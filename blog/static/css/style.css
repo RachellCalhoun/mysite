@@ -5,16 +5,20 @@ html{
 }
 }
 body {
-	font-family: 'Lato', sans-serif;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	color: #747784;
 	font-weight:400;
+  font-size:14px;
 }
 
 hr{
 	height:2px;
 	background-color: #747784;
 }
-
+h1, h2, h3, h4 {
+  font-family: 'Lato', sans-serif;
+  font-weight:400;
+}
 
 .navbar {
   width: 100%;
@@ -76,8 +80,9 @@ hr{
 }
 .title-super{
 	font-size: 45px;
-  font-family: 'Lato', sans-serif;
+  /* font-family: 'Lato', sans-serif; */
   /* font-family: 'Cedarville Cursive', cursive; */
+  font-family: 'Lato', sans-serif;
   font-weight:200;
   margin-top:10px;
 }

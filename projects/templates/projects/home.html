@@ -5,7 +5,7 @@
 
 <div class="avatar-row" id="about">
     <div class="col-md-12 text-center">
-        <img class="img-responsive mypic center-block " src="https://assets.toptal.io/uploads/blog/image/92510/toptal-blog-image-1463492564587-353a3c288892f1e43929cee358dbc24f.gif">
+        <img class="img-responsive mypic center-block img-circle" style="max-width:400px" src="{% static 'images/rachell_talking.JPG' %}">
         <h3>Rachell is a software engineer, data scientist, and community organizer.</h3>
     </div>
 </div>
@@ -29,13 +29,13 @@
                 {% endif %}
                 <div class="description">
                 {% if project.link %}
-                    <h1 class="projecttitle">{{ project.title }}</h1>
+                    <h3 class="projecttitle">{{ project.title }}</h3>
                     {% else %}
-                    <h1 class="projecttitle">{{ project.title }}</h1>
+                    <h3 class="projecttitle">{{ project.title }}</h3>
                     {% endif %}
                     {% if project.text %}
-                    <h4>{{ project.text|safe|truncatechars:100 }}</h4>
-                    <a href="{{project.link}}"><h4>{{project.link}}</h4></a>
+                    <p>{{ project.text|safe|truncatechars:100 }}</p>
+                    <a href="{{project.link}}"><p>{{project.link}}</p></a>
                     {% endif %}
                 </div>
             </div>
@@ -70,13 +70,13 @@
                 {% endif %}
                 <div class="description">
                 {% if project.link %}
-                    <h1 class="projecttitle">{{ project.title }}</h1>
+                    <h3 class="projecttitle">{{ project.title }}</h3>
                     {% else %}
-                    <h1 class="projecttitle">{{ project.title }}</h1>
+                    <h3 class="projecttitle">{{ project.title }}</h3>
                     {% endif %}
                     {% if project.text %}
-                    <h4>{{ project.text|safe|truncatechars:100 }}</h4>
-                    <a href="{{project.link}}"><h4>{{project.link}}</h4></a>
+                    <p>{{ project.text|safe|truncatechars:100 }}</p>
+                    <a href="{{project.link}}"><p>{{project.link}}</p></a>
                     {% endif %}
                 </div>
             </div>
@@ -113,9 +113,68 @@
 {% if forloop.last and forloop.counter0|divisibleby:2%}
 </div>
 </div>
+
+
 {% endif %}
 {% endfor %}
+<div class="container">
+    <div class="title-row row">
+    <div id="media" class="col-md-12">
+        <h2 class="text-muted text-center">Talks & Media</h2>
+    </div>
+    <div class="col-md-12">
+        <h3>Media</h3>
+        <ul>
+        <li>
+            <p><a href="https://www.blog.pythonlibrary.org/2022/05/30/pydev-of-the-week-rachell-calhoun/">PyDev of the Week: Rachell Calhoun - Mouse Vs Python</a> <small class="text-muted "> 2022 </small></p>
+        </li>
+        <li>
+            <p><a href="https://djangochat.com/episodes/django-girls-rachell-calhoun">Django Chat with Django Girls - Rachell Calhoun</a> <small class="text-muted "> 2021 </small></p>
+        </li>
+        <li>
+            <p><a href="https://www.si.umich.edu/people/faces-umsi/faces-umsi-rachell-calhoun">Faces of UMSI: Rachell Calhoun</a> <small class="text-muted "> 2020 </small></p>
+        </li>
+        <li>
+            <p><a href="https://www.womenslifestyle.com/2018/03/08/312124/django-girls-grand-rapids-uplifting-women-through-the-power-of-programming">Django Girls Grand Rapids: Uplifting Women Through the Power of Programming</a> 
+            <small class="text-muted "> 2018 </small></p>
+        </li>
+        <li>
+            <p><a href="https://blog.djangogirls.org/post/161441846273/aisha-rachell-and-dayoung-join-the-django-girls">Aisha, Rachell and Dayoung join the Django Girls Support Team!</a> <small class="text-muted "> 2017 </small></p>
+        </li>
+        <li>
+            <p><a href="https://www.rapidgrowthmedia.com/innovationnews/022417-Django-Girls.aspx">Falling in love with programming: Django Girls inspires women to join the tech world</a> <small class="text-muted "> 2017 </small></p>
+        </li>
+        <li>
+            <p><a href="https://www.toptal.com/press-center/fifth-scholarship-winner">American Developer Rachell Calhoun Wins Fifth Toptal Scholarship</a> <small class="text-muted "> 2016 </small></p>
+        </li>
+        <li>
+            <p><a href="https://pyfound.blogspot.com/2015/10/django-girls-seoul-great-success.html">Django Girls Seoul: A Great Success!</a> <small class="text-muted "> 2015 </small></p></li>
+        <li>
+            <p><a href="https://learntocodewith.me/posts/portfolio-tips/">28 Things to Put on Your Web Developer Portfolio (+ Real-Life Examples!)</a></p>
+        </li>
+    </ul>
 
+    <h3>Talks</h3>
+    <ul>
+        <li>
+            <p><a href="https://www.youtube.com/watch?v=TrAFQW7Wza0">DjangoCon US 2018 - &quot;State of Django&quot; Panel by Simon Willison</a></p>
+        </li>
+        <li>
+            <p><a href="https://www.youtube.com/watch?v=P6JXGhcjB-A">DjangoCon US 2016 - Git in Control, Version Control and How it Could... by Rachell Calhoun</a></p>
+        </li>
+    </ul>
+
+    <h3>Lighting Talks</h3>
+    <ul>
+        <li>
+            <p><a href="https://www.youtube.com/watch?v=U1Y-jgeGh7g">DjangoCon US 2018 - Lightning Talks Day 3</a></p>
+        </li>
+        <li>
+            <p><a href="https://www.youtube.com/watch?v=kDg93T4_rtk&t=1573s">DjangoCon US 2016 - Day 2 Lightning Talks by Many People</a></p>
+        </li>
+    </ul>
+    </div>
+</div>
 
 
 {% endblock %}
