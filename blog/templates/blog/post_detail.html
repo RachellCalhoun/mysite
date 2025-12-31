@@ -2,117 +2,143 @@
 {% load static %}
 
 {% block header %}
+<div class="blogheader">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="blogtitle">
+                    <h1 class="display-4 mb-3">{{ post.title }}</h1>
+                    {% if post.published_date %}
+                    <div class="mb-3">
+                        <p class="mb-2 text-white">
+                            <i class="fas fa-calendar-alt"></i> {{ post.published_date|date:"F d, Y" }} • <i class="fas fa-user"></i> {{ post.author }}
+                        </p>
+                        <a href="/blog" class="btn btn-outline-light btn-sm">
+                            <i class="fas fa-arrow-left"></i> Back to Blog
+                        </a>
+                    </div>
+                    {% else %}
+                        {% if user.is_authenticated %}
+                        <a class="btn btn-success" href="{% url 'blog.views.post_publish' pk=post.pk %}">
+                            <i class="fas fa-share"></i> Publish Post
+                        </a>
+                        {% endif %}
+                    {% endif %}
 
-<div class="titlebackground blogheader">
-    <div class="row titlerow">
-
-        <div class="col-md-12  text-white">
-          <div class="blogtitle ">
-              <h1 class="">{{ post.title }} </h1>
-              {% if post.published_date %}
-              <h4 class="text-black">Published: {{ post.published_date }} <a href="/blog">Back</a></h4>
-              <h4 class="text-black"> Author: {{post.author }}
-              {% else %}
-              {% if user.is_authenticated %}
-              <a class="btn btn-default publishbtn" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>
-              {% endif %}
-            {% endif %}
-            {% if user.is_authenticated %}
-
-          <a class="btn btn-default editbtn" href="{% url "post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-          <a class="btn btn-default deletebtn" href="{% url "post_remove" pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-          {% endif %}
-          </h4>
-
-
-          </div>
+                    {% if user.is_authenticated %}
+                    <div class="admin-controls mt-3">
+                        <a class="btn btn-outline-warning btn-sm" href="{% url "post_edit" pk=post.pk %}">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a class="btn btn-outline-danger btn-sm ms-2" href="{% url "post_remove" pk=post.pk %}">
+                            <i class="fas fa-trash"></i> Delete
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-
     </div>
 </div>
-
 {% endblock %}
 {% block content %}
-<div class="container main">
-      <div class="row">
-        <div class="col-md-2"></div>
-          <div class="col-md-8 content">
-          {%if post.img %} <img class = "img-responsive img-rounded text-center blogimage" src="{{post.img.url}}">  {% endif %}
-          <p class="blogcontent">{{ post.text|safe }}</p>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <article class="blog-post">
+                {% if post.img %}
+                <div class="text-center mb-4">
+                    <img class="img-fluid rounded shadow" src="{{ post.img.url }}" alt="{{ post.title }}" loading="lazy">
+                </div>
+                {% endif %}
 
-          </div>
-          <div class="col-md-2"></div>
-        <!--close the row-->
+                <div class="blog-content">
+                    {{ post.text|safe }}
+                </div>
+            </article>
         </div>
-      <div class="row">
-      <div class="col-md-2"></div>
-        <div class="col-md-8 content">
-
-
-          {% for comment in post.comments.all %}
-    {% if user.is_authenticated or comment.approved_comment %}
-    <hr>
-    <div class="comment">
-        <div class="date">
-            {{ comment.created_date }}
-            {% if not comment.approved_comment %}
-                <a class="btn btn-default removebtn" href="{% url "comment_remove" pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                <a class="btn btn-default okbtn" href="{% url "comment_approve" pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-            {% endif %}
-        </div>
-        <strong>{{ comment.author }}</strong>
-        <p class="comment">{{ comment.text|safe }}</p>
     </div>
-      {% endif %}
-      {% if forloop.last %}
+    <!-- Comments Section (Hidden)
+    {% comment %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <div class="comments-section">
+                <h3 class="mb-4">
+                    <i class="fas fa-comments"></i> Comments
+                    <span class="badge bg-secondary ms-2">{{ post.comments.count }}</span>
+                </h3>
 
-      <h3 class="title">New Comment</h3>
-        <form method="POST" class="post-form" id="commentform" >{% csrf_token %}
-          <p><label for="id_author">Author:</label> <input id="id_author" maxlength="200" name="author" type="text"></p>
-          <p><label for="id_text">Text:</label> <textarea cols="40" id="id_text" name="text" rows="10"></textarea></p>
-          <button type="submit"> Submit</button>
-        <!-- <script>
-        function submitcomment(){
-            document.getElementById('commentform').submit()
-        }
-    </script> -->
+                {% for comment in post.comments.all %}
+                    {% if user.is_authenticated or comment.approved_comment %}
+                    <div class="comment-item card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <strong class="text-primary">{{ comment.author }}</strong>
+                                    <small class="text-muted ms-2">
+                                        <i class="fas fa-clock"></i> {{ comment.created_date|date:"M d, Y g:i A" }}
+                                    </small>
+                                </div>
+                                {% if not comment.approved_comment and user.is_authenticated %}
+                                <div>
+                                    <a class="btn btn-success btn-sm me-1" href="{% url "comment_approve" pk=comment.pk %}">
+                                        <i class="fas fa-check"></i>
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="{% url "comment_remove" pk=comment.pk %}">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <p class="mb-0">{{ comment.text|safe }}</p>
+                            {% if not comment.approved_comment %}
+                            <small class="text-warning">
+                                <i class="fas fa-hourglass-half"></i> Pending approval
+                            </small>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                {% empty %}
+                <div class="text-center py-4">
+                    <i class="fas fa-comment-slash text-muted fa-3x mb-3"></i>
+                    <p class="text-muted">No comments yet. Be the first to comment!</p>
+                </div>
+                {% endfor %}
 
-      </form>
-    </div><!--close 8col-->
-
-    </div><!--close row-->
-   <!--  </div> --><!--close container-->
-      {% endif %}
-      {% empty %}
-
-      <hr>
-       <p>No comments here yet</p>
-       <hr>
-      <h3 class="title">New Comment</h3>
-       <form method="POST" class="post-form" id="commentform">{% csrf_token %}
-          <p><label for="id_author">Author:</label> <input id="id_author" maxlength="200" name="author" type="text"></p>
-          <p><label for="id_text">Text:</label> <textarea cols="40" id="id_text" name="text" rows="10"></textarea></p>
-          <button type="submit">
-                    <!-- class="g-recaptcha save btn btn-default"
-        data-sitekey="6LfllDgUAAAAAF0faUPPDud4HZb2OKtIYkvouMLF"
-        data-callback="submitcomment" -->
-        Submit
-        </button>
-        <!-- <script>
-        function submitcomment(){
-            document.getElementById('commentform').submit()
-        }
-    </script> -->
-
-      </form>
-    </div><!--close 8col-->
-
-    </div><!--close row-->
-
-      {% endfor %}
-          </div>
-
+                <!-- Comment Form -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">
+                            <i class="fas fa-plus-circle"></i> Add a Comment
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" class="comment-form">{% csrf_token %}
+                            <div class="mb-3">
+                                <label for="id_author" class="form-label">Your Name</label>
+                                <input id="id_author" class="form-control" maxlength="200" name="author" type="text" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_text" class="form-label">Your Comment</label>
+                                <textarea id="id_text" class="form-control" name="text" rows="5" placeholder="Share your thoughts..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Submit Comment
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
+    </div>
+    {% endcomment %}
+    <!-- End Hidden Comments Section -->
+</div>
 
+<script>
+document.querySelectorAll('.blog-content img').forEach(img => {
+    img.setAttribute('loading', 'lazy');
+});
+</script>
 {% endblock %}

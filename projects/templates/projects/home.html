@@ -3,14 +3,12 @@
 
 {% block header %}
 
-<div class="avatar-row" id="about">
-    <div class="col-md-3"></div>
+<div class="avatar-row row justify-content-center" id="about">
     <div class="col-md-6 text-center">
-        <img class="img-responsive mypic center-block img-circle" style="max-width:50%"
+        <img class="img-fluid mypic mx-auto d-block rounded-circle" style="max-width:50%"
             src="{% static 'images/rachell_talking.JPG' %}">
         <h3>Rachell is a software engineer, data scientist, and community organizer.</h3>
     </div>
-    <div class="col-md-3"></div>
 </div>
 
 
@@ -28,8 +26,8 @@
         <div class="col-md-6">
             <div class="projects center-block">
                 {% if project.img %}
-                <img class="img-responsive img-rounded center-block catimage" data-target="#{{project.pk}}"
-                    data-toggle="modal" class="img-responsive thumbnail center-block" alt="cute skills"
+                <img class="img-fluid rounded mx-auto d-block catimage" data-bs-target="#{{project.pk}}"
+                    data-bs-toggle="modal" class="img-fluid rounded mx-auto d-block" alt="{{project.title}}"
                     src="{{ project.img.url }}">
                 {% endif %}
                 <div class="description">
@@ -57,7 +55,7 @@
                         <h4 class="modal-title text-center" id="myModalLabel">{{project.title}}</h4>
                     </div>
                     <div class="modal-body">
-                        <img class="img-responsive" style="min-width:100%" src="{{project.img.url}}">
+                        <img class="img-fluid" style="min-width:100%" src="{{project.img.url}}">
                         <p class="text-dark">{{project.text|safe}}</p>
                         {% if project.link %}
                         <a href="{{ project.link }}">
@@ -66,7 +64,7 @@
                         {% endif %}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -76,8 +74,8 @@
         <div class="col-md-6">
             <div class="projects center-block">
                 {% if project.img %}
-                <img class="img-responsive img-rounded center-block catimage" data-target="#{{project.pk}}"
-                    data-toggle="modal" class="img-responsive thumbnail center-block" alt="cute skills"
+                <img class="img-fluid rounded mx-auto d-block catimage" data-bs-target="#{{project.pk}}"
+                    data-bs-toggle="modal" class="img-fluid rounded mx-auto d-block" alt="{{project.title}}"
                     src="{{ project.img.url }}">
                 {% endif %}
                 <div class="description">
@@ -106,7 +104,7 @@
                             <h4 class="modal-title text-center" id="myModalLabel">{{project.title}}</h4>
                         </div>
                         <div class="modal-body">
-                            <img class="img-responsive" style="min-width:100%" src="{{project.img.url}}">
+                            <img class="img-fluid" style="min-width:100%" src="{{project.img.url}}">
                             <p class="text-dark">{{project.text|safe}}</p>
                             {% if project.link %}
                             <a href="{{ project.link }}">
@@ -115,7 +113,7 @@
                             {% endif %}
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
