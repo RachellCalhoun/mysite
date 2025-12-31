@@ -76,19 +76,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,xhtmlxtras,spellchecker,paste,searchreplace, save, advhr, advimage, advlink, emotions, iespell, insertdatetime, preview",
-    'theme_advanced_buttons1': "bold,italic,underline,strikethrough,sub,sup,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,formatselect,fontselect,fontsizeselect",
-    'theme_advanced_buttons2': "bullist,numlist,outdent,indent,ltr,rtl,separator,link,unlink,anchor,image,separator,table,insertdate,inserttime,advhr,emotions,media,charmap,separator,undo,redo, spellchecker",
-    'theme': 'advanced',
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 10,
-    'elementpath': False,
-    'height': 300,
-    'width': 1000,
+    'plugins': 'link image table lists charmap preview searchreplace code fullscreen media',
+    'toolbar': 'undo redo | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media table | charmap preview code fullscreen',
+    'menubar': 'file edit view insert format tools table',
+    'height': 400,
+    'width': '100%',
     'resize': 'both',
-
+    'browser_spellcheck': True,
 }
-TINYMCE_SPELLCHECKER = True
 
 
 # Database
