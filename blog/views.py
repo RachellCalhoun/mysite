@@ -116,6 +116,11 @@ def upload_image(request):
 
     uploaded_file = request.FILES['file']
 
+    # Validate file size (10MB max per image)
+    max_file_size = 10 * 1024 * 1024  # 10MB
+    if uploaded_file.size > max_file_size:
+        return JsonResponse({'error': 'File too large (max 10MB)'}, status=400)
+
     # Validate file type
     allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
     if uploaded_file.content_type not in allowed_types:
