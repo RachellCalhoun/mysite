@@ -19,7 +19,7 @@
                     </div>
                     {% else %}
                         {% if user.is_authenticated %}
-                        <a class="btn btn-success" href="{% url 'blog.views.post_publish' pk=post.pk %}">
+                        <a class="btn btn-success" href="{% url 'post_publish' pk=post.pk %}">
                             <i class="fas fa-share"></i> Publish Post
                         </a>
                         {% endif %}

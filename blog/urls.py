@@ -12,4 +12,5 @@ urlpatterns = [
     re_path(r'^post/(?P<pk>[0-9]+)/remove/$', views.post_remove, name='post_remove'),
     re_path(r'^comment/(?P<pk>[0-9]+)/approve/$', views.comment_approve, name='comment_approve'),
     re_path(r'^comment/(?P<pk>[0-9]+)/remove/$', views.comment_remove, name='comment_remove'),
+    re_path(r'^upload-image/$', views.upload_image, name='upload_image'),
 ]

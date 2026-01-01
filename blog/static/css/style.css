@@ -351,10 +351,10 @@ display: block;
 
 .blog-content img {
   max-width: 100%;
-  height: auto;
   border-radius: 8px;
   margin: 20px 0;
 }
+
 
 .blog-content p {
   margin-bottom: 1.5rem;
