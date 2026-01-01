@@ -400,26 +400,25 @@ display: block;
 .blog-post-preview:nth-child(3) { animation-delay: 0.3s; }
 .blog-post-preview:nth-child(4) { animation-delay: 0.4s; }
 
-@media(max-width: 1000px){
-
-  .title-super{
-	font-size: 1.5em;
-	padding-bottom:.5em;
-  font-weight: 300;
+@media (max-width: 1000px) {
+  .title-super {
+    font-size: 1.5em;
+    padding-bottom: 0.5em;
+    font-weight: 300;
   }
-  .subtitle{
-  	display:none;
+  .subtitle {
+    display: none;
   }
   .description > h4 {
-    font-size: 14;
+    font-size: 14px;
   }
   .description > h1 {
     font-size: 20px;
   }
   .projects {
-      min-height:350px;
-       width:100%;
-       overflow:hidden;
+    min-height: 350px;
+    width: 100%;
+    overflow: hidden;
   }
   .projecttitle {
     font-size: 25px;
@@ -430,13 +429,13 @@ display: block;
   .introtitle {
     font-size: 20px;
   }
-
   .blogheader {
-    background-position:  35% 70%;
+    background-position: 35% 70%;
   }
+}
 
-  @media (min-width: 768px) {
-  /* Navbar positioning*/
+@media (min-width: 768px) {
+  /* Navbar positioning */
   .navbar-wrapper {
     margin-top: 20px;
   }
@@ -449,35 +448,146 @@ display: block;
     padding-left: 0;
   }
   .subtitle {
-  	font-size: 1em;
-  	margin-top:.5em;
+    font-size: 1em;
+    margin-top: 0.5em;
     padding-left: 1.5em;
   }
+}
 
- }
-  @media (max-width: 768px) {
-    .post-list-title, .blogtitle {
-      width: 100%;
-      text-align: center;
-      padding-right:0;
-      padding-left:0;
-    }
-
-    .blogtitle h1, .post-list-title h1 {
-      font-size: 1.8rem;
-    }
-
-    .blogtitle h2, .post-list-title h2 {
-      font-size: 1.2rem;
-    }
-
-    .blog-preview-image {
-      max-height: 150px;
-    }
-
-    body {
-      padding-top: 80px;
-    }
+/* Mobile styles for blog post detail page */
+@media (max-width: 768px) {
+  body {
+    padding-top: 80px;
   }
 
+  .post-list-title,
+  .blogtitle {
+    width: 100%;
+    text-align: center;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .blogtitle h1,
+  .post-list-title h1 {
+    font-size: 1.8rem;
+  }
+
+  .blogtitle h2,
+  .post-list-title h2 {
+    font-size: 1.2rem;
+  }
+
+  .blogtitle .display-4 {
+    font-size: 1.75rem;
+  }
+
+  .blogheader {
+    min-height: 200px;
+    padding: 1rem 0;
+  }
+
+  .blog-preview-image {
+    max-height: 150px;
+  }
+
+  /* Blog content mobile fixes */
+  .blog-content {
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Stack everything vertically on mobile - no floats */
+  .blog-content * {
+    float: none !important;
+    clear: both !important;
+  }
+
+  .blog-content img {
+    display: block !important;
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 1rem auto !important;
+  }
+
+  /* Reset any inline widths on text containers */
+  .blog-content p,
+  .blog-content div,
+  .blog-content span {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+
+  /* Handle tables that might overflow */
+  .blog-content table {
+    display: block;
+    width: 100% !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Handle pre/code blocks that might overflow */
+  .blog-content pre,
+  .blog-content code {
+    max-width: 100%;
+    overflow-x: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  /* Handle iframes (embedded videos, etc.) */
+  .blog-content iframe {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Handle any divs with inline widths */
+  .blog-content div[style*="width"] {
+    max-width: 100% !important;
+    width: auto !important;
+  }
+
+  /* Blockquotes on mobile */
+  .blog-content blockquote {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid #667eea;
+  }
+
+  /* Admin controls stacking on mobile */
+  .admin-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .admin-controls .btn {
+    margin: 0;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .blogtitle .display-4 {
+    font-size: 1.5rem;
+  }
+
+  .blogtitle p {
+    font-size: 0.875rem;
+  }
+
+  .blog-content {
+    font-size: 14px;
+  }
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
 
