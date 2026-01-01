@@ -4,31 +4,31 @@
       <head>
 
 
-        <title>Rachell Calhoun</title>
+        <title>{% block title %}Rachell Calhoun | Software Developer{% endblock %}</title>
         <meta charset="utf-8">
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tiny.cloud https://code.jquery.com https://ajax.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.tiny.cloud; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="image_src" href="https://avatars3.githubusercontent.com/u/10239547?v=3&s=466https://avatars3.githubusercontent.com/u/10239547?v=3&s=466" />
 
-        <!-- for Google -->
-        <meta name="description" content="Rachell's Portfolio and Blog" />
-        <meta name="keywords" content="Rachell Django Python Portfolio" />
-
+        {% block meta_tags %}
+        <!-- Default meta tags for main site -->
+        <meta name="description" content="Rachell Calhoun - Software Developer, Django enthusiast, and community organizer." />
+        <meta name="keywords" content="Rachell Calhoun, Django, Python, Software Developer" />
         <meta name="author" content="Rachell Calhoun" />
 
-        <!-- for Facebook -->
-        <meta property="og:title" content="Rachell's Portfolio and Blog" />
-        <meta property="og:type" content="article" />
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Rachell Calhoun | Software Developer" />
+        <meta property="og:description" content="Software Developer, Django enthusiast, and community organizer." />
         <meta property="og:image" content="https://avatars3.githubusercontent.com/u/10239547?v=3&s=466" />
-        <meta property="og:url" content="http://www.rachellcalhoun.com/" />
-        <meta property="og:description" content="Rachell's Portfolio and Blog" />
+        <meta property="og:url" content="https://www.rachellcalhoun.com/" />
 
-        <!-- for Twitter -->
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Rachell's Portfolio and Blog" />
-        <meta name="twitter:description" content="Rachell's Portfolio and Blog" />
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Rachell Calhoun | Software Developer" />
+        <meta name="twitter:description" content="Software Developer, Django enthusiast, and community organizer." />
         <meta name="twitter:image" content="https://avatars3.githubusercontent.com/u/10239547?v=3&s=466" />
+        {% endblock %}
 
     <!-- Optional theme -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="images/favicon(1).ico" /> -->

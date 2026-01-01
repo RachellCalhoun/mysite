@@ -1,5 +1,9 @@
+import html
+import re
+
 from django.db import models
 from django.utils import timezone
+from django.utils.html import strip_tags
 from django.utils.text import slugify
 from tinymce import models as tinymce_models
 
@@ -30,6 +34,20 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_excerpt(self, length=160):
+        """Return plain text excerpt for meta descriptions and previews."""
+        text = strip_tags(self.text)
+        text = html.unescape(text)
+        text = re.sub(r'\s+', ' ', text).strip()
+        if len(text) > length:
+            text = text[:length].rsplit(' ', 1)[0] + '...'
+        return text
+
+    def get_first_image(self):
+        """Extract first image URL from post content for social sharing."""
+        match = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', self.text)
+        return match.group(1) if match else None
 
     def approved_comments(self):
         return self.comments.filter(approved_comment=True)
