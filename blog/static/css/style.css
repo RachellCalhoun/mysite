@@ -1,14 +1,13 @@
-html{
-  {
-   width: 100%; //fallback
-   width: 100vw;
+html {
+  overflow-x: hidden;
 }
-}
+
 body {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	color: #747784;
-	font-weight:400;
-  font-size:14px;
+  overflow-x: hidden;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #747784;
+  font-weight: 400;
+  font-size: 14px;
   padding-top: 100px; /* Add space for fixed navbar */
 }
 
