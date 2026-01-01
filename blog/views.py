@@ -1,10 +1,19 @@
+import os
+import uuid
+from io import BytesIO
 
-from django.utils import timezone
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment
-from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
+from django.views.decorators.http import require_POST
+
+from PIL import Image
+
+from .forms import CommentForm, PostForm
+from .models import Comment, Post
 
 
 def post_list(request):
@@ -31,9 +40,13 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
+            if request.POST.get('action') == 'publish':
+                post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            if post.published_date:
+                return redirect('post_detail', pk=post.pk)
+            else:
+                return redirect('post_draft_list')
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
@@ -46,8 +59,13 @@ def post_edit(request, pk):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            if request.POST.get('action') == 'publish' and not post.published_date:
+                post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            if post.published_date:
+                return redirect('post_detail', pk=post.pk)
+            else:
+                return redirect('post_draft_list')
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
@@ -87,3 +105,62 @@ def comment_remove(request, pk):
     post_pk = comment.post.pk
     comment.delete()
     return redirect('post_detail', pk=post_pk)
+
+
+@login_required
+@require_POST
+def upload_image(request):
+
+    if 'file' not in request.FILES:
+        return JsonResponse({'error': 'No file uploaded'}, status=400)
+
+    uploaded_file = request.FILES['file']
+
+    # Validate file type
+    allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
+    if uploaded_file.content_type not in allowed_types:
+        return JsonResponse({'error': 'Invalid file type'}, status=400)
+
+    # Open and process image (validates it's a real image)
+    try:
+        img = Image.open(uploaded_file)
+        img.verify()  # Verify it's a valid image
+        uploaded_file.seek(0)  # Reset file pointer after verify
+        img = Image.open(uploaded_file)  # Re-open after verify
+    except Exception:
+        return JsonResponse({'error': 'Invalid image file'}, status=400)
+
+    # Skip compression for GIFs (animated)
+    if uploaded_file.content_type == 'image/gif':
+        if img.format != 'GIF':
+            return JsonResponse({'error': 'Invalid GIF file'}, status=400)
+        uploaded_file.seek(0)  # Reset for saving
+        ext = '.gif'
+        filename = f"blog_images/{uuid.uuid4().hex}{ext}"
+        saved_path = default_storage.save(filename, uploaded_file)
+    else:
+        # Resize if larger than 1920px on longest side
+        max_size = 1920
+        if max(img.size) > max_size:
+            img.thumbnail((max_size, max_size), Image.LANCZOS)
+
+        # Convert to RGB if necessary (for JPEG)
+        if img.mode in ('RGBA', 'P'):
+            # Has transparency - save as PNG
+            buffer = BytesIO()
+            img.save(buffer, format='PNG', optimize=True)
+            ext = '.png'
+        else:
+            # No transparency - save as JPEG
+            if img.mode != 'RGB':
+                img = img.convert('RGB')
+            buffer = BytesIO()
+            img.save(buffer, format='JPEG', quality=85, optimize=True)
+            ext = '.jpg'
+
+        buffer.seek(0)
+        filename = f"blog_images/{uuid.uuid4().hex}{ext}"
+        saved_path = default_storage.save(filename, ContentFile(buffer.read()))
+
+    file_url = default_storage.url(saved_path)
+    return JsonResponse({'location': file_url})

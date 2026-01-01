@@ -83,6 +83,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': '100%',
     'resize': 'both',
     'browser_spellcheck': True,
+    'paste_data_images': True,
 }
 
 
@@ -142,3 +143,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# Needed for legacy posts with base64-embedded images
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800  # 50MB
