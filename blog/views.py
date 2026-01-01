@@ -12,26 +12,24 @@ from django.views.decorators.http import require_POST
 
 from PIL import Image
 
-from .forms import CommentForm, PostForm
-from .models import Comment, Post
+from .forms import PostForm
+from .models import Post
 
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request,'blog/post_list.html',{'posts': posts})
+    return render(request, 'blog/post_list.html', {'posts': posts})
 
-def post_detail(request, pk):
+
+def post_detail_redirect(request, pk):
+    """Redirect old pk-based URLs to new slug-based URLs."""
     post = get_object_or_404(Post, pk=pk)
-    if request.method == "POST":
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = CommentForm()
-    return render(request, 'blog/post_detail.html', {'form': form, 'post': post})
+    return redirect('post_detail', slug=post.slug, permanent=True)
+
+
+def post_detail(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    return render(request, 'blog/post_detail.html', {'post': post})
 
 @login_required
 def post_new(request):
@@ -44,12 +42,13 @@ def post_new(request):
                 post.published_date = timezone.now()
             post.save()
             if post.published_date:
-                return redirect('post_detail', pk=post.pk)
+                return redirect('post_detail', slug=post.slug)
             else:
                 return redirect('post_draft_list')
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
+
 
 @login_required
 def post_edit(request, pk):
@@ -63,7 +62,7 @@ def post_edit(request, pk):
                 post.published_date = timezone.now()
             post.save()
             if post.published_date:
-                return redirect('post_detail', pk=post.pk)
+                return redirect('post_detail', slug=post.slug)
             else:
                 return redirect('post_draft_list')
     else:
@@ -79,32 +78,14 @@ def post_draft_list(request):
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
-    return redirect('post_detail', pk=pk)
+    return redirect('post_detail', slug=post.slug)
 
-@login_required
-def publish(self):
-    self.published_date = timezone.now()
-    self.save()
 
 @login_required
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('post_list')
-
-
-@login_required
-def comment_approve(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-    comment.approve()
-    return redirect('post_detail', pk=comment.post.pk)
-
-@login_required
-def comment_remove(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-    post_pk = comment.post.pk
-    comment.delete()
-    return redirect('post_detail', pk=post_pk)
 
 
 @login_required
